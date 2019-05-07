@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 13:52:03 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/07 14:10:31 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,28 @@ int draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 {
     t_window    window;
     t_point     i;
+    int         dx;
+    int         dy;
     double      error;
-    double      slope;
+    double      error_next;
+    int         error_adjust;
     
     window = *(fdf->window);
     i.x = a.x;
     i.y = a.y;
+    dx = b.x - a.x;
+    dy = b.y - a.y;
     error = -0.5;
-    slope = ((double)b.x - (double)a.x) / ((double)b.y - (double)a.y);
+    error_next = (double)dx / (double)dy;
+    error_adjust = 1;
 
-    while (i.x < b.x) {
+    while (i.x++ < b.x) {
         mlx_pixel_put(window.mlx_ptr, window.window_ptr, i.x, i.y, colour);
-        if ((error += slope) > 0.0)
+        if ((error += error_next) > 0.0)
         {
             i.y++;
-            error -= 1;
+            error -= error_adjust;
         }
-        i.x++;
     }
     return EXIT_SUCCESS;
 }
