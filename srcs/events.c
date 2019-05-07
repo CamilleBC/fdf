@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:29:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 13:50:03 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/07 16:56:05 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ int deal_key(int key, void *param)
     t_point b;
 
     fdf = (t_fdf *)param;
-    a.x = 20;
-    a.y = 20;
-    b.x = 300;
-    b.y = 600;
+    a.x = 00;
+    a.y = 00;
+    b.x = 30;
+    b.y = 800;
     
     switch (key)
     {
         case KEY_ENTER:
-            draw_line(fdf, a, b, GREEN);
+            draw_line(fdf->window, a, b, GREEN);
             break;
         case KEY_ESCAPE:
             kill_window(fdf);

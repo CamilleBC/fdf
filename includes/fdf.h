@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 13:59:35 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 13:27:29 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/07 16:49:02 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "libft.h"
 #include <math.h>
-#include "draw.h"
 
 typedef struct  s_window
 {

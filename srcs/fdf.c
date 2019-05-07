@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:52:17 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 12:33:56 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/07 17:40:10 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ int main (int argc, char *argv[])
     t_fdf   *fdf;
     int     status;
 
-    if (argc != 1)
+    if (argc != 2)
         return EXIT_FAILURE;
 
     status = EXIT_SUCCESS;
     fdf = NULL;
     if ((status = init_fdf_struct(&fdf)) == EXIT_FAILURE)
         return status;
-    // if ((status = read_map(fdf->map, argv[1])) == EXIT_FAILURE
-    //     || (status = draw_map(fdf->map, fdf->window) == EXIT_FAILURE))
-    if ((status = draw_map(fdf) == EXIT_FAILURE))
+    if ((status = read_map(fdf->map, argv[1])) == EXIT_FAILURE
+        || (status = draw_map(fdf) == EXIT_FAILURE))
         free_fdf_struct(fdf);
     return status;
 } 
