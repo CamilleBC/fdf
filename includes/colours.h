@@ -6,9 +6,12 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:34:39 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/06 18:37:51 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/07 08:45:38 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef COLOURS_H   
+#define COLOURS_H
 
 #define BLACK 	0x000000
 #define WHITE 	0xFFFFFF
@@ -26,3 +29,5 @@
 #define PURPLE 	0x800080
 #define TEAL 	0x008080
 #define NAVY 	0x000080
+
+#endif /* COLOURS_H */

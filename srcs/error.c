@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keycodes.h                                         :+:      :+:    :+:   */
+/*   error.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 18:32:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 08:46:00 by cbaillat         ###   ########.fr       */
+/*   Created: 2019/05/07 09:13:53 by cbaillat          #+#    #+#             */
+/*   Updated: 2019/05/07 09:25:04 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYCODES_H   
-#define KEYCODES_H   
+#include "error.h"
 
+int check_error(int result)
+{
+    if (result < 0)
+    {
+        perror("The following error occured");
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
 
-#define KEY_ENTER   0x24
-#define KEY_ESCAPE  0x35
-#define KEY_RIGHT   0x7C
-
-#endif /* KEYCODES_H */
+int check_null(void *result)
+{
+    if (result == NULL)
+    {
+        perror("The following error occured");
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}

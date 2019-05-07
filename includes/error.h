@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keycodes.h                                         :+:      :+:    :+:   */
+/*   error.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 18:32:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 08:46:00 by cbaillat         ###   ########.fr       */
+/*   Created: 2019/05/07 09:17:26 by cbaillat          #+#    #+#             */
+/*   Updated: 2019/05/07 09:19:48 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYCODES_H   
-#define KEYCODES_H   
+#ifndef ERROR_H
+#define ERROR_H
 
+#include <stdlib.h>
 
-#define KEY_ENTER   0x24
-#define KEY_ESCAPE  0x35
-#define KEY_RIGHT   0x7C
+int check_error(int result);
+int check_null(void *result);
 
-#endif /* KEYCODES_H */
+#endif /* ERROR_H */

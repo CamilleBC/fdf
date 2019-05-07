@@ -6,7 +6,7 @@
 #    By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/06 12:29:40 by cbaillat          #+#    #+#              #
-#    Updated: 2019/05/06 18:30:41 by cbaillat         ###   ########.fr        #
+#    Updated: 2019/05/07 11:08:33 by cbaillat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,10 @@ DBGFLAGS	=	-Wall -Wextra -DDEBUG -g $(IFLAGS)
 
 SRCDIR		=	srcs
 SRCFILES	=	fdf.c \
+				error.c \
 				draw.c \
-				events.c
+				events.c \
+				parser.c
 
 OBJDIR		=	objs
 OBJFILES	:= 	$(SRCFILES:%.c=$(OBJDIR)/%.o)

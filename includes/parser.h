@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keycodes.h                                         :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 18:32:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 08:46:00 by cbaillat         ###   ########.fr       */
+/*   Created: 2019/05/07 08:47:04 by cbaillat          #+#    #+#             */
+/*   Updated: 2019/05/07 09:05:23 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYCODES_H   
-#define KEYCODES_H   
+#ifndef PARSER_H
+#define PARSER_H
 
+#include "libft.h"
+#include <fcntl.h>
 
-#define KEY_ENTER   0x24
-#define KEY_ESCAPE  0x35
-#define KEY_RIGHT   0x7C
-
-#endif /* KEYCODES_H */
+#endif /* PARSER_H */

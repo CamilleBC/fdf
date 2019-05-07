@@ -6,18 +6,43 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:29:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/06 18:31:21 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/07 13:50:03 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "events.h"
 
-int kill(void *param) { 
-    printf ("Kill!");
+int deal_key(int key, void *param)
+{
+    ft_print("key pressed: %x\n", key);
+    t_fdf   *fdf;
+    t_point a;
+    t_point b;
 
-    t_window *window = (t_window *)param;
-    mlx_destroy_window(window->mlx_ptr,window->window_ptr);
-    exit(0);
-     
-    return 0; 
+    fdf = (t_fdf *)param;
+    a.x = 20;
+    a.y = 20;
+    b.x = 300;
+    b.y = 600;
+    
+    switch (key)
+    {
+        case KEY_ENTER:
+            draw_line(fdf, a, b, GREEN);
+            break;
+        case KEY_ESCAPE:
+            kill_window(fdf);
+            break;
+        default:
+            return 1;
+            break;
+    }
+    return 0;
+}
+
+void kill_window(t_fdf *fdf)
+{ 
+    mlx_destroy_window(fdf->window->mlx_ptr, fdf->window->window_ptr);
+    free_fdf_struct(fdf);
+    exit(EXIT_SUCCESS);
 } 

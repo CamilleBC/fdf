@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keycodes.h                                         :+:      :+:    :+:   */
+/*   events.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 18:32:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 08:46:00 by cbaillat         ###   ########.fr       */
+/*   Created: 2019/05/07 09:56:07 by cbaillat          #+#    #+#             */
+/*   Updated: 2019/05/07 11:16:46 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYCODES_H   
-#define KEYCODES_H   
+#ifndef EVENTS_H
+#define EVENTS_H
 
+#include "fdf.h"
+#include "keycodes.h"
 
-#define KEY_ENTER   0x24
-#define KEY_ESCAPE  0x35
-#define KEY_RIGHT   0x7C
+int deal_key(int key, void *param);
+void kill_window(t_fdf *fdf);
 
-#endif /* KEYCODES_H */
+#endif /* EVENTS_H */
