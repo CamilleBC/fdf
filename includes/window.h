@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 10:46:46 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 13:47:17 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:38:29 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 #include "mlx.h"
 #include "typedefs.h"
 
-void create_window(t_map *map, t_window *win);
+void create_window(t_fdf *fdf);
 
 #endif /* WINDOW_H */

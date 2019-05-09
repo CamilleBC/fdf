@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 14:54:08 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:29:05 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** to B, we change the step for each pixel to (1) or (-1).
 */
 // void draw_line(t_map *map, t_point a, t_point b, int colour)
-void draw_line(t_window *win, t_point a, t_point b, int colour)
+void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 {
 	t_point delta;
 	t_point step;
@@ -34,7 +34,7 @@ void draw_line(t_window *win, t_point a, t_point b, int colour)
 	error = delta.x + delta.y;
 	while ((a.x != b.x) || (a.y != b.y))
 	{
-		mlx_pixel_put(win->mlx_ptr, win->win_ptr, a.x, a.y, colour);
+		mlx_pixel_put(fdf->window->mlx_ptr, fdf->window->win_ptr, a.x, a.y, colour);
 		// fill_pixel(win->image_string, a, win.res, colour);
 		next_error = 2 * error;
 		if (next_error >= delta.y)
@@ -53,19 +53,19 @@ void draw_line(t_window *win, t_point a, t_point b, int colour)
 /*
 ** Use a binary mask to set the pixels color
 */
-void fill_pixel(char **image_string, t_point pixel, t_resolution res, int colour)
+void fill_pixel(int **image, t_point pixel, t_resolution res, int colour)
 {
 	int x_index;
 	int y_index;
 	int pixel_ptr;
 
-	x_index = pixel.x * (4 * sizeof(char));
-	y_index = pixel.y * (res.x * sizeof(char));
+	x_index = pixel.x * 4;
+	y_index = pixel.y * res.x;
 	pixel_ptr = x_index + y_index;
 
 	// DEBUG
 	printf("Pixel X: %d\n", x_index);
 	printf("Pixel Y: %d\n", y_index);
-	printf("Pixel: %x\n",image_string[pixel_ptr]);
-	(*image_string)[pixel_ptr] = colour;
+	printf("Pixel: %x\n", image[pixel_ptr]);
+	(*image)[pixel_ptr] = colour;
 }

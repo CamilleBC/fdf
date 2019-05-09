@@ -12,12 +12,10 @@
 
 #include "error.h"
 
-void error_fdf(t_map *map, t_window *window, char *error_msg)
+void error_fdf(t_fdf *fdf, char *error_msg)
 {
-	if (map != NULL)
-		free_map(map);
-	if (window != NULL)
-		free_window(window);
+	if (fdf != NULL)
+		free_fdf(fdf);
 	if (error_msg != NULL)
 		write(STDERR_FILENO, error_msg, ft_strlen(error_msg));
 	else

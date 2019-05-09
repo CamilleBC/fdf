@@ -26,6 +26,6 @@
 
 #define INVALID -1
 
-void error_fdf(t_map *map, t_window *window, char *error_msg);
+void error_fdf(t_fdf *fdf, char *error_msg);
 
 #endif /* ERROR_H */

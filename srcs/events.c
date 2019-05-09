@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:29:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 14:55:00 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/09 16:30:49 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int deal_key(int key, void *param)
 	b.y = 600;
 
 	if (key == KEY_ENTER)
-		draw_line(fdf->window, a, b, GREEN);
+		draw_line(fdf, a, b, GREEN);
 	else if (key == KEY_ESCAPE)
 		kill_window(fdf);
 	return (EXIT_SUCCESS);
