@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                 :+:      :+:    :+:   */
+/*   parser_checker.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/07 09:13:53 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 09:25:04 by cbaillat         ###   ########.fr       */
+/*   Created: 2019/05/09 11:34:38 by cbaillat          #+#    #+#             */
+/*   Updated: 2019/05/09 11:35:58 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "parser.h"
 
-void error_fdf(t_map *map, t_window *window, char *error_msg)
+int check_chars(char *line)
 {
-	if (map != NULL)
-		free_map(map);
-	if (window != NULL)
-		free_window(window);
-	if (error_msg != NULL)
-		write(STDERR_FILENO, error_msg, ft_strlen(error_msg));
-	else
-		perror("The following error occured");
-	exit(EXIT_FAILURE);
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (!ft_isdigit(line[i]) && !ft_isspace(line[i]))
+			return (EXIT_FAILURE);
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+int check_map_x(t_map *map, char **split_line)
+{
+	int i;
+
+	i = 0;
+	while (split_line[i])
+		i++;
+	if (map->x == INVALID)
+		map->x = i;
+	else if (map->x != i)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }

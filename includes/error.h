@@ -13,9 +13,19 @@
 #ifndef ERROR_H
 #define ERROR_H
 
+/*
+** free.h -> Free structures
+** stdio.h -> STD defines & write
+** stdlib.h -> EXIT defines
+** typedefs.h -> custom types
+*/
+#include "free.h"
+#include "typedefs.h"
 #include <stdlib.h>
+#include <unistd.h>
 
-int check_error(int result);
-int check_null(void *result);
+#define INVALID -1
+
+void error_fdf(t_map *map, t_window *window, char *error_msg);
 
 #endif /* ERROR_H */

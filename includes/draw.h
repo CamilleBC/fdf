@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 11:05:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 16:50:49 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/09 13:19:34 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,12 @@
 #define DRAW_H
 
 #include "colours.h"
-#include "fdf.h"
+#include "error.h"
+#include "events.h"
 #include "mlx.h"
-
-typedef struct  s_fdf       t_fdf;
-
-typedef struct  s_point
-{
-    int x;
-    int y;
-}               t_point;
+#include "typedefs.h"
 
 void draw_line(t_window *window, t_point a, t_point b, int colour);
-int draw_map(t_fdf *fdf);
+int  draw_map(t_map *map, t_window *window);
 
 #endif /* DRAW_H */

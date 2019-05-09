@@ -6,7 +6,7 @@
 #    By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/06 12:29:40 by cbaillat          #+#    #+#              #
-#    Updated: 2019/05/07 11:08:33 by cbaillat         ###   ########.fr        #
+#    Updated: 2019/05/09 13:47:30 by cbaillat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,19 @@ EXEC	=	fdf
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
-DBGFLAGS	=	-Wall -Wextra -DDEBUG -g $(IFLAGS) 
+DBGFLAGS	=	-Wall -Wextra -DDEBUG -g $(IFLAGS)
 
 SRCDIR		=	srcs
-SRCFILES	=	fdf.c \
+SRCFILES	=	draw.c \
 				error.c \
-				draw.c \
 				events.c \
-				parser.c
+				fdf.c \
+				free.c \
+				init.c \
+				parser.c \
+				parser_checker.c \
+				projection.c \
+				window.c
 
 OBJDIR		=	objs
 OBJFILES	:= 	$(SRCFILES:%.c=$(OBJDIR)/%.o)
@@ -60,11 +65,11 @@ LDFLAGS = $(LIBDIRFLAGS) $(LIBFILESFLAGS)
 # 	$@ evaluates to all
 #	$< evaluates to library.cpp
 #	$^ evaluates to library.cpp main.cpp
-#   $* The stem with which an implicit rule matches 
-#		If the target is dir/a.foo.b and the target pattern is a.%.b 
+#   $* The stem with which an implicit rule matches
+#		If the target is dir/a.foo.b and the target pattern is a.%.b
 #		then the stem is dir/foo.
-# 		In a static pattern rule, the stem is part of the file name 
-#		that matched the ‘%’ in the target pattern. 
+# 		In a static pattern rule, the stem is part of the file name
+#		that matched the ‘%’ in the target pattern.
 
 .PHONY: all clean fclean re
 

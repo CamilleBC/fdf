@@ -6,58 +6,97 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 08:42:46 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 17:47:04 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:06:51 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "error.h"
-#include "fdf.h"
 
-int read_map(t_map *map, const char *path)
+/*
+** This file holds all functions related to reading the map and saving it to a
+** structure.
+*/
+
+void parse_map(t_map *map, const char *path)
 {
-    int     fd;
-    int     i;
-	char	*line;
-    int     status;
+	int   fd;
+	int   i;
+	char *line;
+	int   status;
 
-    if (check_error(fd = open(path, O_RDONLY)) == EXIT_FAILURE)
-        return EXIT_FAILURE;
+	if ((fd = open(path, O_RDONLY)) < 0)
+		error_fdf(map, NULL, NULL);
 	i = 0;
 	while ((status = get_next_line(fd, &line)) > FILE_READ)
 	{
-		if (check_error(parse_line(line, map, i)) == EXIT_FAILURE)
-			return EXIT_FAILURE;
+		if (i % 10 == 0)
+			if ((map->array = ft_realloc(map->array, i * sizeof(int *)
+				, (i + 10) * sizeof(int *))) == NULL)
+			{
+				free(line);
+				error_fdf(map, NULL, NULL);
+			}
+		parse_line(line, map, i);
 		i++;
 	}
+	if (i == 0)
+		error_fdf(map, NULL, "The map is empty.\n");
+	else if (status < 0)
+		error_fdf(map, NULL, NULL);
+	map->y = i;
 	free(line);
-    return status;
+	close(fd);
+	print_map(map);
 }
 
-int parse_line(char *line, t_map *map, int map_index)
+void parse_line(char *line, t_map *map, int i)
 {
 	char	**split_line;
 	int		*points;
 
-	if (*line == '\0')
-		return EXIT_FAILURE;
-	if ((check_null(split_line = ft_strsplit(line, ' '))) 
-		== EXIT_FAILURE)
-		return EXIT_FAILURE;
-	points = get_points(split_line);
-	
-	return EXIT_SUCCESS;
+	split_line = NULL;
+	if (*line == '\0' || *line == '\n'
+		|| check_chars(line) == EXIT_FAILURE
+		|| (split_line = ft_strsplit(line, ' ')) == NULL
+		|| check_map_x(map, split_line) == EXIT_FAILURE
+		|| (map->array[i] = parse_points(split_line)) == NULL)
+	{
+		if (split_line != NULL)
+			free(split_line);
+		error_fdf(map, NULL, NULL);
+	}
 }
 
-int *get_points(char **split_line)
+int *parse_points(char **split_line)
 {
-	int i;
+	int  i;
+	int  j;
+	int *points;
 
 	i = 0;
 	while (split_line[i])
-	{
-		printf("array[%d]: %s\n", i, split_line[i]);
 		i++;
+	if ((points = (int *) malloc(i * sizeof(int))) == NULL)
+		return NULL;
+	j = 0;
+	while (j < i)
+	{
+		points[j] = ft_atoi(split_line[j]);
+		j++;
 	}
-	return NULL;
+	return points;
+}
+
+/*DEBUG */
+void print_map(t_map *map)
+{
+	printf("Map X: %d\n", map->x);
+	printf("Map Y: %d\n", map->y);
+	for (int i = 0; i < map->y; i++)
+	{
+		for (int j = 0; j < map->x; j++)
+			printf("%d ", map->array[i][j]);
+		printf("\n");
+	}
 }

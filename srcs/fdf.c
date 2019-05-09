@@ -6,65 +6,30 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:52:17 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 17:40:10 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:06:14 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "parser.h"
-#include "error.h"
 
-int main (int argc, char *argv[])
-{ 
-    t_fdf   *fdf;
-    int     status;
-
-    if (argc != 2)
-        return EXIT_FAILURE;
-
-    status = EXIT_SUCCESS;
-    fdf = NULL;
-    if ((status = init_fdf_struct(&fdf)) == EXIT_FAILURE)
-        return status;
-    if ((status = read_map(fdf->map, argv[1])) == EXIT_FAILURE
-        || (status = draw_map(fdf) == EXIT_FAILURE))
-        free_fdf_struct(fdf);
-    return status;
-} 
-
-int init_fdf_struct(t_fdf **fdf_ptr)
+int main(int argc, char *argv[])
 {
-    t_fdf   *fdf;
+	t_map 			*map;
+	t_window		*window;
+	t_resolution	res;
 
-    if (check_null(fdf = (t_fdf *)malloc(sizeof(t_fdf))) == EXIT_FAILURE)
-        return EXIT_FAILURE;
-    *fdf_ptr = fdf;
-    fdf->map = NULL;
-    fdf->window = NULL;
-    if (check_null(fdf->window = (t_window *)malloc(sizeof(t_window)))
-            == EXIT_FAILURE)
-        return EXIT_FAILURE;
-    fdf->window->mlx_ptr = NULL;
-    fdf->window->window_ptr = NULL;
-    if (check_null(fdf->map = (t_map *)malloc(sizeof(t_map))) == EXIT_FAILURE)
-        return EXIT_FAILURE;
-    fdf->map->array = NULL;
-    
-    return EXIT_SUCCESS;
-}
-
-void free_fdf_struct(t_fdf *fdf)
-{
-    if (fdf->map != NULL)
-    {
-        if(fdf->map->array != NULL)
-            free(fdf->map->array);
-        free(fdf->map);
-    }
-    if (fdf->window != NULL)
-    {
-        if(fdf->window->mlx_ptr != NULL)
-            free(fdf->window->mlx_ptr);
-        free(fdf->window);
-    }
+	if (argc != 2)
+	{
+		error_fdf(NULL, NULL, "Wrong number of arguments.\n");
+		return (EXIT_FAILURE);
+	}
+	if ((map = init_map()) == NULL)
+		return (EXIT_FAILURE);
+	res.x = 800;
+	res.y = 600;
+	if ((window = init_window(res)) == NULL)
+		error_fdf(map, NULL, NULL);
+	parse_map(map, argv[1]);
+	create_window(map, window);
+	return (EXIT_SUCCESS);
 }
