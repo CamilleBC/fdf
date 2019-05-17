@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:29:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:30:49 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/17 15:20:36 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ int deal_key(int key, void *param)
 	a.x = 0;
 	a.y = 0;
 	b.x = 800;
-	b.y = 600;
+	b.y = 300;
 
 	if (key == KEY_ENTER)
-		draw_line(fdf, a, b, GREEN);
+	{
+		draw_map(fdf);
+		mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
+			, fdf->img->ptr, 0, 0);
+	}
 	else if (key == KEY_ESCAPE)
 		kill_window(fdf);
 	return (EXIT_SUCCESS);

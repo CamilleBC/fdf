@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:29:05 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/17 15:19:59 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 	error = delta.x + delta.y;
 	while ((a.x != b.x) || (a.y != b.y))
 	{
-		mlx_pixel_put(fdf->window->mlx_ptr, fdf->window->win_ptr, a.x, a.y, colour);
-		// fill_pixel(win->image_string, a, win.res, colour);
+		// mlx_pixel_put(fdf->window->mlx_ptr, fdf->window->win_ptr, a.x, a.y, colour);
+		fill_pixel(fdf, a.x, a.y, colour);
 		next_error = 2 * error;
 		if (next_error >= delta.y)
 		{
@@ -50,22 +50,10 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 	}
 }
 
-/*
-** Use a binary mask to set the pixels color
-*/
-void fill_pixel(int **image, t_point pixel, t_resolution res, int colour)
+void fill_pixel(t_fdf *fdf, int x, int y, int color)
 {
-	int x_index;
-	int y_index;
-	int pixel_ptr;
+	unsigned int		*img_cast;
 
-	x_index = pixel.x * 4;
-	y_index = pixel.y * res.x;
-	pixel_ptr = x_index + y_index;
-
-	// DEBUG
-	printf("Pixel X: %d\n", x_index);
-	printf("Pixel Y: %d\n", y_index);
-	printf("Pixel: %x\n", image[pixel_ptr]);
-	(*image)[pixel_ptr] = colour;
+	img_cast = (unsigned int *)(fdf->img->str);
+	img_cast[y * fdf->window->res.x + x] = color;
 }

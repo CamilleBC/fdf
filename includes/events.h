@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 09:56:07 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 12:18:16 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/17 15:21:00 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 ** typedefs.h -> Custom types
 */
 #include "draw.h"
+#include "window.h"
 #include "free.h"
 #include "keycodes.h"
 #include "typedefs.h"
+#include "projection.h"
 #include <stdlib.h>
 
 int deal_key(int key, void *param);

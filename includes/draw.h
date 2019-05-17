@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 11:05:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:34:34 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/17 14:38:11 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "typedefs.h"
 
 void draw_line(t_fdf *fdf, t_point a, t_point b, int colour);
-int  draw_map(t_map *map, t_window *window);
+void fill_pixel(t_fdf *fdf, int x, int y, int color);
+
 
 #endif /* DRAW_H */

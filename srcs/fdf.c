@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:52:17 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:39:56 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/17 15:37:57 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int main(int argc, char *argv[])
 	}
 	zoom = 1;
 	proj = ISO;
-	res.x = 800;
-	res.y = 600;
+	res.x = 2000;
+	res.y = 1500;
 	if ((fdf = init_fdf()) == NULL)
 		return (EXIT_FAILURE);
 	if ((fdf->camera = init_camera(proj, zoom)) == NULL

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection.h                                       :+:      :+:    :+:   */
+/*   matrice.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klebon <klebon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 16:29:25 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 15:24:30 by klebon           ###   ########.fr       */
+/*   Created: 2019/05/17 12:19:40 by klebon            #+#    #+#             */
+/*   Updated: 2019/05/17 15:56:02 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROJECTION_H
-#define PROJECTION_H
+#include "projection.h"
 
-#include "typedefs.h"
-#include "colours.h"
-#include "draw.h"
+void	set_idmat(double mat[3][3])
+{
+	int		i;
+	int		j;
 
-void	set_idmat(double mat[3][3]);
-void	draw_map(t_fdf *fdf);
-
-
-#endif /* PROJECTION_H */
+	i = -1;
+	while (++i < 3)
+	{
+		j = -1;
+		while (++j < 3)
+		{
+			mat[i][j] = (j == i) ? 1.00 : 0.00;
+		}
+	}
+}

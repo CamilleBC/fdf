@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:58:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:17:37 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/17 12:25:25 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_fdf *init_fdf(void)
 	fdf->camera = NULL;
 	fdf->map = NULL;
 	fdf->window = NULL;
+	set_idmat(fdf->rot);
 	return fdf;
 }
 
