@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:58:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 12:25:25 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/20 15:20:50 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ t_fdf *init_fdf(void)
 	fdf->map = NULL;
 	fdf->window = NULL;
 	set_idmat(fdf->rot);
+	set_rotx(fdf->rotx);
+	set_roty(fdf->roty);
+	set_rotz(fdf->rotz);
 	return fdf;
 }
 

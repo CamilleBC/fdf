@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:52:17 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 15:37:57 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/20 15:38:16 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	}
 	zoom = 1;
 	proj = ISO;
-	res.x = 2000;
+	res.x = 1500;
 	res.y = 1500;
 	if ((fdf = init_fdf()) == NULL)
 		return (EXIT_FAILURE);

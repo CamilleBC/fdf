@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:34:28 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 16:04:46 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:35:37 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ t_point	project_parallele(t_3dpoint *p)
 	double		n;
 
 	n = 0.1;
-	a.x = (int)(p->x + n * p->z) * 50;
-	a.y = (int)(p->y + n / 2 * p->z) * 50;
+	// a.x = (int)(p->x + n * p->z);
+	// a.y = (int)(p->y + n / 2 * p->z);
+	a.x = (int)((p->x - p->y) * cos(0.523599));
+	a.y = (int)(-p->z + (p->x + p->y) * sin(0.523599));
+	// a.x = (int)p->x;
+	// a.y = (int)(-p->z);
 	return (a);
 }
 
@@ -32,7 +36,8 @@ void	mult_rot(t_fdf *fdf, int x, int y, t_3dpoint *p)
 	int		**map;
 
 	map = fdf->map->array;
-	p->x = x * fdf->rot[0][0] + y * fdf->rot[1][0] + map[y][x] * fdf->rot[2][0];
+	p->x = x * fdf->rot[0][0] + y * fdf->rot[1][0] + map[y][x] * fdf->rot[2][0]
+		+ fdf->window->res.x / 2;
 	p->y = x * fdf->rot[0][1] + y * fdf->rot[1][1] + map[y][x] * fdf->rot[2][1];
 	p->z = x * fdf->rot[0][2] + y * fdf->rot[1][2] + map[y][x] * fdf->rot[2][2];
 }
@@ -64,6 +69,7 @@ void	draw_map(t_fdf *fdf)
 	int			i;
 	int			j;
 
+	create_image(fdf);
 	j = -1;
 	while (++j < fdf->map->y)
 	{

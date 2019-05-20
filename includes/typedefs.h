@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 08:34:10 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 12:47:47 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/20 12:36:02 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ typedef struct	s_fdf
 	t_camera	*camera;
 	t_image		*img;
 	double		rot[3][3];
+	double		rotx[3][3];
+	double		roty[3][3];
+	double		rotz[3][3];
 }				t_fdf;
 
 #endif /* TYPEDEFS_H */

@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 09:56:07 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 15:21:00 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:58:02 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@
 
 int deal_key(int key, void *param);
 void kill_window(t_fdf *fdf);
+void	key_x(t_fdf *fdf);
+void	key_y(t_fdf *fdf);
+void	key_z(t_fdf *fdf);
 
 #endif /* EVENTS_H */

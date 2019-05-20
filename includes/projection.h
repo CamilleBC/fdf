@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 16:29:25 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 15:24:30 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/20 12:35:36 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 #include "draw.h"
 
 void	set_idmat(double mat[3][3]);
+void	set_rotx(double mat[3][3]);
+void	set_roty(double mat[3][3]);
+void	set_rotz(double mat[3][3]);
+void	mult_mat(double m1[3][3], double m2[3][3]);
 void	draw_map(t_fdf *fdf);
 
 

@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 15:19:59 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/20 15:14:15 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 	error = delta.x + delta.y;
 	while ((a.x != b.x) || (a.y != b.y))
 	{
-		// mlx_pixel_put(fdf->window->mlx_ptr, fdf->window->win_ptr, a.x, a.y, colour);
 		fill_pixel(fdf, a.x, a.y, colour);
 		next_error = 2 * error;
 		if (next_error >= delta.y)
