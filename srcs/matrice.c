@@ -6,13 +6,13 @@
 /*   By: klebon <klebon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:19:40 by klebon            #+#    #+#             */
-/*   Updated: 2019/05/20 17:03:13 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:33:13 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "projection.h"
 
-void	set_idmat(double mat[3][3])
+void	set_idmat(t_fdf *fdf)
 {
 	int		i;
 	int		j;
@@ -24,11 +24,19 @@ void	set_idmat(double mat[3][3])
 		while (++j < 3)
 		{
 			if (i == j && i == 2)
-				mat[i][j] = 1.00;
+				fdf->rot[i][j] = 1.00;
 			else if (i == j)
-				mat[i][j] = 10.00;
+				fdf->rot[i][j] = 10.00;
+			else
+				fdf->rot[i][j] = 0.00;
+
 		}
 	}
+	fdf->movex = SCR_WIDTH / 2;
+	fdf->movey = 0;
+	fdf->movez = 0.00;
+	fdf->zoom = 1.00;
+	fdf->alt = 0;
 }
 
 void	set_rotx(double mat[3][3])
@@ -44,10 +52,10 @@ void	set_rotx(double mat[3][3])
 			mat[i][j] = 0.00;
 	}
 	mat[0][0] = 1;
-	mat[1][1] = cos(0.52);
-	mat[2][2] = cos(0.52);
-	mat[1][2] = sin(0.52);
-	mat[2][1] = -sin(0.52);
+	mat[1][1] = cos(0.1);
+	mat[2][2] = cos(0.1);
+	mat[1][2] = sin(0.1);
+	mat[2][1] = -sin(0.1);
 }
 
 void	set_roty(double mat[3][3])
@@ -62,11 +70,11 @@ void	set_roty(double mat[3][3])
 		while (++j < 3)
 			mat[i][j] = 0.00;
 	}
-	mat[0][0] = cos(0.52);
+	mat[0][0] = cos(0.1);
 	mat[1][1] = 1;
-	mat[2][2] = cos(0.52);
-	mat[2][0] = sin(0.52);
-	mat[0][2] = -sin(0.52);
+	mat[2][2] = cos(0.1);
+	mat[2][0] = sin(0.1);
+	mat[0][2] = -sin(0.1);
 }
 
 void	set_rotz(double mat[3][3])
@@ -81,11 +89,11 @@ void	set_rotz(double mat[3][3])
 		while (++j < 3)
 			mat[i][j] = 0.00;
 	}
-	mat[0][0] = cos(0.52);
-	mat[1][1] = cos(0.52);
+	mat[0][0] = cos(0.1);
+	mat[1][1] = cos(0.1);
 	mat[2][2] = 1;
-	mat[0][1] = sin(0.52);
-	mat[1][0] = -sin(0.52);
+	mat[0][1] = sin(0.1);
+	mat[1][0] = -sin(0.1);
 }
 
 void	mult_mat(double m1[3][3], double m2[3][3])

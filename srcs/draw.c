@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/20 15:14:15 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/21 15:03:16 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void fill_pixel(t_fdf *fdf, int x, int y, int color)
 	unsigned int		*img_cast;
 
 	img_cast = (unsigned int *)(fdf->img->str);
-	img_cast[y * fdf->window->res.x + x] = color;
+	img_cast[y * SCR_WIDTH + x] = color;
 }

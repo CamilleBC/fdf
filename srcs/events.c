@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:29:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/20 16:59:20 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:55:24 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@ int deal_key(int key, void *param)
 	t_fdf 	*fdf;
 
 	fdf = (t_fdf*) param;
-	if (key == KEY_ENTER)
+	if (key == K_ENTER)
 	{
+		set_idmat(fdf);
+		mlx_clear_window(fdf->window->mlx_ptr, fdf->window->win_ptr);
 		draw_map(fdf);
-		mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
-			, fdf->img->ptr, 0, 0);
 	}
-	else if (key == KEY_X)
-		key_x(fdf);
-	else if (key == KEY_Y)
-		key_y(fdf);
-	else if (key == KEY_Z)
-			key_z(fdf);
-	else if (key == KEY_ESCAPE)
+	else if (key == K_X || key == K_Y || key == K_Z)
+		rotate(fdf, key);
+	else if (key == K_LEFT || key == K_RIGHT || key == K_UP || key == K_DOWN
+		|| key == K_PGUP || key == K_PGDOWN)
+		move(fdf, key);
+	else if (key == K_MULT || key == K_DIVID || key == K_PLUS || key == K_MINUS)
+		zoom(fdf, key);
+	else if (key == K_ESCAPE)
 		kill_window(fdf);
 	return (EXIT_SUCCESS);
 }
@@ -42,29 +43,46 @@ void kill_window(t_fdf *fdf)
 	exit(EXIT_SUCCESS);
 }
 
-void	key_x(t_fdf *fdf)
+void	rotate(t_fdf *fdf, int key)
 {
-	mult_mat(fdf->rot, fdf->rotx);
+	if (key == K_X)
+		mult_mat(fdf->rot, fdf->rotx);
+	else if (key == K_Y)
+		mult_mat(fdf->rot, fdf->roty);
+	else
+		mult_mat(fdf->rot, fdf->rotz);
 	mlx_clear_window(fdf->window->mlx_ptr, fdf->window->win_ptr);
 	draw_map(fdf);
-	mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
-		, fdf->img->ptr, 0, 0);
 }
 
-void	key_y(t_fdf *fdf)
+void 	move(t_fdf *fdf, int key)
 {
-	mult_mat(fdf->rot, fdf->roty);
+	if (key == K_LEFT)
+		fdf->movex -= 5;
+	else if (key == K_RIGHT)
+		fdf->movex += 5;
+	else if (key == K_UP)
+		fdf->movey -= 5;
+	else if (key == K_DOWN)
+		fdf->movey += 5;
+	else if (key == K_PGUP)
+		fdf->movez += 5;
+	else if (key == K_PGDOWN)
+		fdf->movez -= 5;
 	mlx_clear_window(fdf->window->mlx_ptr, fdf->window->win_ptr);
 	draw_map(fdf);
-	mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
-		, fdf->img->ptr, 0, 0);
 }
 
-void	key_z(t_fdf *fdf)
+void 	zoom(t_fdf *fdf, int key)
 {
-	mult_mat(fdf->rot, fdf->rotz);
+	if (key == K_MULT)
+		fdf->zoom += 0.1;
+	else if (key == K_DIVID && fdf->zoom -0.1 > 0)
+		fdf->zoom -= 0.1;
+	else if (key == K_PLUS)
+		fdf->alt += 1;
+	else if (key == K_MINUS)
+		fdf->alt -= 1;
 	mlx_clear_window(fdf->window->mlx_ptr, fdf->window->win_ptr);
 	draw_map(fdf);
-	mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
-		, fdf->img->ptr, 0, 0);
 }

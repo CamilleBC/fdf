@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 09:56:07 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/20 16:58:02 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/21 17:47:55 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 
 int deal_key(int key, void *param);
 void kill_window(t_fdf *fdf);
-void	key_x(t_fdf *fdf);
-void	key_y(t_fdf *fdf);
-void	key_z(t_fdf *fdf);
+void	rotate(t_fdf *fdf, int key);
+void 	move(t_fdf *fdf, int key);
+void 	zoom(t_fdf *fdf, int key);
 
 #endif /* EVENTS_H */

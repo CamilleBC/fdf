@@ -6,18 +6,27 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:32:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/20 16:53:52 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:28:53 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYCODES_H
 #define KEYCODES_H
 
-#define KEY_ENTER   0x24
-#define KEY_ESCAPE  0x35
-#define KEY_RIGHT   0x7C
-#define KEY_X		7
-#define KEY_Y		16
-#define KEY_Z		6
+#define K_ENTER		36
+#define K_ESCAPE	53
+#define K_RIGHT		124
+#define K_LEFT		123
+#define K_UP		126
+#define K_DOWN		125
+#define K_X			7
+#define K_Y			16
+#define K_Z			6
+#define K_MULT		67
+#define K_DIVID		75
+#define K_PLUS		69
+#define K_MINUS		78
+#define K_PGUP		116
+#define K_PGDOWN	121
 
 #endif /* KEYCODES_H */

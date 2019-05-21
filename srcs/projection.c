@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:34:28 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/20 17:35:37 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:54:09 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ void	mult_rot(t_fdf *fdf, int x, int y, t_3dpoint *p)
 	int		**map;
 
 	map = fdf->map->array;
-	p->x = x * fdf->rot[0][0] + y * fdf->rot[1][0] + map[y][x] * fdf->rot[2][0]
-		+ fdf->window->res.x / 2;
-	p->y = x * fdf->rot[0][1] + y * fdf->rot[1][1] + map[y][x] * fdf->rot[2][1];
-	p->z = x * fdf->rot[0][2] + y * fdf->rot[1][2] + map[y][x] * fdf->rot[2][2];
+	p->x = (x * fdf->rot[0][0] + y * fdf->rot[1][0] + (map[y][x] + fdf->alt) * fdf->rot[2][0])
+		* fdf->zoom + fdf->movex;
+	p->y = (x * fdf->rot[0][1] + y * fdf->rot[1][1] + (map[y][x] + fdf->alt) * fdf->rot[2][1])
+		* fdf->zoom + fdf->movey;
+	p->z = (x * fdf->rot[0][2] + y * fdf->rot[1][2] + (map[y][x] + fdf->alt) * fdf->rot[2][2])
+		* fdf->zoom + fdf->movez;
 }
 
 void 	apply_transfo(t_fdf *fdf, int x, int y)
@@ -54,13 +56,15 @@ void 	apply_transfo(t_fdf *fdf, int x, int y)
 	{
 		mult_rot(fdf, x + 1, y, &pt[1]);
 		b = project_parallele(&pt[1]);
-		draw_line(fdf, a, b, RED);
+		draw_line(fdf, a, b, (fdf->map->array[y][x + 1] == 10
+			|| fdf->map->array[y][x] == 10) ? GREEN : RED);
 	}
 	if (y + 1 < fdf->map->y)
 	{
 		mult_rot(fdf, x, y + 1, &pt[2]);
 		b = project_parallele(&pt[2]);
-		draw_line(fdf, a, b, RED);
+		draw_line(fdf, a, b, (fdf->map->array[y + 1][x] == 10
+			|| fdf->map->array[y][x] == 10) ? GREEN : RED);
 	}
 }
 
@@ -79,4 +83,6 @@ void	draw_map(t_fdf *fdf)
 			apply_transfo(fdf, i, j);
 		}
 	}
+	mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
+		, fdf->img->ptr, 0, 0);
 }

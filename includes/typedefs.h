@@ -6,12 +6,15 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 08:34:10 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/20 12:36:02 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:32:50 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEFS_H
 #define TYPEDEFS_H
+
+#define SCR_WIDTH	1500
+#define SCR_HEIGTH	1500
 
 typedef enum	e_projection
 {
@@ -33,13 +36,6 @@ typedef struct	s_3dpoint
 	double		z;
 }				t_3dpoint;
 
-
-typedef struct	s_res
-{
-	int x;
-	int y;
-}				t_resolution;
-
 typedef struct	s_image
 {
 	void		*ptr;
@@ -51,7 +47,6 @@ typedef struct	s_window
 	void			*mlx_ptr;
 	void			*win_ptr;
 	void			*image_ptr;
-	t_resolution	res;
 }				t_window;
 
 typedef struct	s_map
@@ -77,6 +72,11 @@ typedef struct	s_fdf
 	double		rotx[3][3];
 	double		roty[3][3];
 	double		rotz[3][3];
+	int			movex;
+	int			movey;
+	int			alt;
+	double		movez;
+	double		zoom;
 }				t_fdf;
 
 #endif /* TYPEDEFS_H */
