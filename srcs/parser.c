@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 08:42:46 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:41:34 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/22 16:07:19 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void parse_map(t_fdf *fdf, const char *path)
 	int   status;
 
 	if ((fd = open(path, O_RDONLY)) < 0)
-		error_fdf(fdf, NULL);
+		error_fdf(fdf, "error open");
 	i = 0;
 	while ((status = get_next_line(fd, &line)) > FILE_READ)
 	{
@@ -35,7 +35,7 @@ void parse_map(t_fdf *fdf, const char *path)
 				, (i + 10) * sizeof(int *))) == NULL)
 			{
 				free(line);
-				error_fdf(fdf, NULL);
+				error_fdf(fdf, "error realloc");
 			}
 		parse_line(line, fdf, i);
 		i++;
@@ -43,11 +43,11 @@ void parse_map(t_fdf *fdf, const char *path)
 	if (i == 0)
 		error_fdf(fdf, "The map is empty.\n");
 	else if (status < 0)
-		error_fdf(fdf, NULL);
+		error_fdf(fdf, "error gnl");
 	fdf->map->y = i;
 	free(line);
 	close(fd);
-	print_map(fdf->map);
+	// print_map(fdf->map);
 }
 
 void parse_line(char *line, t_fdf *fdf, int i)
@@ -64,7 +64,7 @@ void parse_line(char *line, t_fdf *fdf, int i)
 	{
 		if (split_line != NULL)
 			free(split_line);
-		error_fdf(fdf, NULL);
+		error_fdf(fdf, "error parse line");
 	}
 }
 

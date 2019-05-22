@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/21 15:03:16 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/22 15:22:55 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 // void draw_line(t_map *map, t_point a, t_point b, int colour)
 void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 {
+	// printf("DEBUG draw\n");
 	t_point delta;
 	t_point step;
 	int     error;
@@ -47,12 +48,17 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 			a.y += step.y;
 		}
 	}
+	// printf("DEBUG draw out\n");
 }
 
 void fill_pixel(t_fdf *fdf, int x, int y, int color)
 {
+	// printf("DEBUG fill in x = %d, y = %d\n", x, y);
 	unsigned int		*img_cast;
-
-	img_cast = (unsigned int *)(fdf->img->str);
-	img_cast[y * SCR_WIDTH + x] = color;
+	if (x < SCR_WIDTH && x >= 0 && y >= 0 && y < SCR_HEIGTH )
+	{
+		img_cast = (unsigned int *)(fdf->img->str);
+		img_cast[y * SCR_WIDTH + x] = color;
+	}
+	// printf("DEBUG fill out x = %d, y = %d\n", x, y);
 }

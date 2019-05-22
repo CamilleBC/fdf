@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 10:46:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/21 17:13:11 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/22 15:07:22 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	create_window(t_fdf *fdf)
 	if (!(fdf->img = (t_image *)malloc(sizeof(t_image))))
 		return ;
 	draw_map(fdf);
-	mlx_key_hook(win->win_ptr, deal_key, (void *)fdf);
+	mlx_hook(win->win_ptr, 2, 0, deal_key, (void *)fdf);
 	mlx_loop(win->mlx_ptr);
 }
 

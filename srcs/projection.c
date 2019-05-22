@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:34:28 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/21 18:54:09 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/22 15:26:46 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 */
 t_point	project_parallele(t_3dpoint *p)
 {
+	// printf("DEBUG project\n");
 	t_point		a;
 	double		n;
 
@@ -33,19 +34,21 @@ t_point	project_parallele(t_3dpoint *p)
 
 void	mult_rot(t_fdf *fdf, int x, int y, t_3dpoint *p)
 {
+	// printf("DEBUG mult\n");
 	int		**map;
 
 	map = fdf->map->array;
-	p->x = (x * fdf->rot[0][0] + y * fdf->rot[1][0] + (map[y][x] + fdf->alt) * fdf->rot[2][0])
+	p->x = (x * fdf->rot[0][0] + y * fdf->rot[1][0] + (map[y][x] * fdf->alt) * fdf->rot[2][0])
 		* fdf->zoom + fdf->movex;
-	p->y = (x * fdf->rot[0][1] + y * fdf->rot[1][1] + (map[y][x] + fdf->alt) * fdf->rot[2][1])
+	p->y = (x * fdf->rot[0][1] + y * fdf->rot[1][1] + (map[y][x] * fdf->alt) * fdf->rot[2][1])
 		* fdf->zoom + fdf->movey;
-	p->z = (x * fdf->rot[0][2] + y * fdf->rot[1][2] + (map[y][x] + fdf->alt) * fdf->rot[2][2])
+	p->z = (x * fdf->rot[0][2] + y * fdf->rot[1][2] + (map[y][x] * fdf->alt) * fdf->rot[2][2])
 		* fdf->zoom + fdf->movez;
 }
 
 void 	apply_transfo(t_fdf *fdf, int x, int y)
 {
+	// printf("DEBUG transfo\n");
 	t_point	a;
 	t_point	b;
 	t_3dpoint	pt[3];
@@ -83,6 +86,7 @@ void	draw_map(t_fdf *fdf)
 			apply_transfo(fdf, i, j);
 		}
 	}
+	// printf("DEBUG\n");
 	mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
 		, fdf->img->ptr, 0, 0);
 }
