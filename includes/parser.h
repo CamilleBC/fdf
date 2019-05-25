@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 08:47:04 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:38:56 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/23 12:05:20 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int check_map_x(t_map *map, char **split_line);
 */
 void parse_line(char *line, t_fdf *fdf, int i);
 void parse_map(t_fdf *fdf, const char *path);
-int *parse_points(char **split_line);
+int *parse_points(char **split_line, t_fdf *fdf);
 
 #endif /* PARSER_H */

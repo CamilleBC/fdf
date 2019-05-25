@@ -6,7 +6,7 @@
 #    By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/06 12:29:40 by cbaillat          #+#    #+#              #
-#    Updated: 2019/05/17 12:23:50 by klebon           ###   ########.fr        #
+#    Updated: 2019/05/24 12:14:17 by klebon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCFILES	=	draw.c \
 				parser_checker.c \
 				projection.c \
 				window.c	\
-				matrice.c
+				matrice.c	\
+				color.c
 
 OBJDIR		=	objs
 OBJFILES	:= 	$(SRCFILES:%.c=$(OBJDIR)/%.o)

@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/22 15:22:55 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/24 12:17:55 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 	// printf("DEBUG draw\n");
 	t_point delta;
 	t_point step;
+	t_point start;
 	int     error;
 	int     next_error;
 
+	start = a;
 	delta.x = abs(b.x - a.x);
 	delta.y = -abs(b.y - a.y);
 	step.x = a.x < b.x ? 1 : -1;
@@ -35,7 +37,7 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 	error = delta.x + delta.y;
 	while ((a.x != b.x) || (a.y != b.y))
 	{
-		fill_pixel(fdf, a.x, a.y, colour);
+		fill_pixel(fdf, a.x, a.y, get_color(a, start, b, delta));
 		next_error = 2 * error;
 		if (next_error >= delta.y)
 		{

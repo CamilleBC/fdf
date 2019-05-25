@@ -6,7 +6,7 @@
 /*   By: klebon <klebon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:19:40 by klebon            #+#    #+#             */
-/*   Updated: 2019/05/21 18:33:13 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/23 12:10:46 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	set_idmat(t_fdf *fdf)
 	fdf->movey = 0;
 	fdf->movez = 0.00;
 	fdf->zoom = 1.00;
-	fdf->alt = 0;
+	fdf->alt = 1;
 }
 
 void	set_rotx(double mat[3][3])

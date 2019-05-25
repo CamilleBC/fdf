@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 08:34:10 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/21 18:32:50 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/24 12:12:44 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_point
 {
 	int x;
 	int y;
+	int	color;
 }				t_point;
 
 typedef struct	s_3dpoint
@@ -34,6 +35,7 @@ typedef struct	s_3dpoint
 	double		x;
 	double		y;
 	double		z;
+	double		zmax;
 }				t_3dpoint;
 
 typedef struct	s_image
@@ -77,6 +79,7 @@ typedef struct	s_fdf
 	int			alt;
 	double		movez;
 	double		zoom;
+	int			zmax;
 }				t_fdf;
 
 #endif /* TYPEDEFS_H */

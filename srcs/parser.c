@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 08:42:46 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/22 16:07:19 by klebon           ###   ########.fr       */
+/*   Updated: 2019/05/24 12:38:22 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void parse_map(t_fdf *fdf, const char *path)
 	fdf->map->y = i;
 	free(line);
 	close(fd);
+	printf("zmax %d\n", fdf->zmax);
 	// print_map(fdf->map);
 }
 
@@ -57,10 +58,10 @@ void parse_line(char *line, t_fdf *fdf, int i)
 
 	split_line = NULL;
 	if (*line == '\0' || *line == '\n'
-		|| check_chars(line) == EXIT_FAILURE
+		// || check_chars(line) == EXIT_FAILURE
 		|| (split_line = ft_strsplit(line, ' ')) == NULL
 		|| check_map_x(fdf->map, split_line) == EXIT_FAILURE
-		|| (fdf->map->array[i] = parse_points(split_line)) == NULL)
+		|| (fdf->map->array[i] = parse_points(split_line, fdf)) == NULL)
 	{
 		if (split_line != NULL)
 			free(split_line);
@@ -68,7 +69,7 @@ void parse_line(char *line, t_fdf *fdf, int i)
 	}
 }
 
-int *parse_points(char **split_line)
+int *parse_points(char **split_line, t_fdf *fdf)
 {
 	int  i;
 	int  j;
@@ -83,6 +84,8 @@ int *parse_points(char **split_line)
 	while (j < i)
 	{
 		points[j] = ft_atoi(split_line[j]);
+		if (points[j] > fdf->zmax)
+			fdf->zmax = points[j];
 		j++;
 	}
 	return points;
