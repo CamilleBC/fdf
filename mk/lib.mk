@@ -5,8 +5,9 @@ LIBDIR   := libft\
             minilibx
 LDLIBS   := -lft\
             -lm\
-            -lmlx
-MLXFLAGS := -framework OpenGL -framework AppKit
+            -lmlx\
+            -lX11\
+            -lXext
 
-LDFLAGS := $(addprefix -L,$(LIBDIR)) $(MLXFLAGS) $(LDLIBS)
+LDFLAGS := $(addprefix -L,$(LIBDIR)) $(LDLIBS)
 

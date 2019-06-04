@@ -2,4 +2,4 @@ objs/
 deps/
 fdf
 .vscode/
-minilibx/
+minilibx/*.o
