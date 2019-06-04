@@ -18,8 +18,10 @@
 ** stdio.h -> STD defines & write
 ** stdlib.h -> EXIT defines
 ** typedefs.h -> custom types
+** unistd.h -> write function
 */
 #include "free.h"
+#include "libft.h"
 #include "typedefs.h"
 #include <stdlib.h>
 #include <unistd.h>

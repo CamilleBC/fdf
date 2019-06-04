@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 08:42:46 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/24 12:38:22 by klebon           ###   ########.fr       */
+/*   Updated: 2019/06/04 14:00:43 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void parse_map(t_fdf *fdf, const char *path)
 void parse_line(char *line, t_fdf *fdf, int i)
 {
 	char	**split_line;
-	int		*points;
+	// int		*points;
 
 	split_line = NULL;
 	if (*line == '\0' || *line == '\n'

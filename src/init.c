@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:58:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/23 12:06:33 by klebon           ###   ########.fr       */
+/*   Updated: 2019/06/04 13:59:49 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 t_fdf *init_fdf(void)
 {
 	t_fdf *   fdf;
-	t_map *   map;
-	t_window *window;
-	t_camera *camera;
 
 	if ((fdf = (t_fdf *) malloc(sizeof(t_fdf))) == NULL)
 		return NULL;

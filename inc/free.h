@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:52:15 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:26:12 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 13:53:48 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "typedefs.h"
 #include "mlx.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 void free_camera(t_camera *camera);
 void free_fdf(t_fdf *fdf);

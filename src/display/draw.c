@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/24 12:17:55 by klebon           ###   ########.fr       */
+/*   Updated: 2019/06/04 13:59:12 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 // void draw_line(t_map *map, t_point a, t_point b, int colour)
 void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 {
+	// dbg:
+	(void)colour;
 	// printf("DEBUG draw\n");
 	t_point delta;
 	t_point step;

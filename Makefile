@@ -6,7 +6,7 @@
 #    By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/06 12:29:40 by cbaillat          #+#    #+#              #
-#    Updated: 2019/06/04 13:03:25 by cbaillat         ###   ########.fr        #
+#    Updated: 2019/06/04 14:51:50 by cbaillat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ MAKE  := @make
 RM    := @rm -f
 
 # FLAGS
-CFLAGS   := -Wall -Wextra #-Werror
+CFLAGS   := -Wall -Wextra -Werror #-std=c89
 DBGFLAGS := -g -DDEBUG
 IFLAGS = $(foreach idir, $(INC_DIR), $(addprefix -I, $(idir)))
 
@@ -68,6 +68,7 @@ $(EXEC): $(OBJ)
 	$(MAKE) -C ./libft/
 	$(MAKE) -C ./minilibx/
 	$(ECHO) "Compiling ${GREEN}$@${NC} executable..."
+	$(ECHO) $(INC_DIR)
 	@$(CC) $(MLXFLAGS) -o $@ $^ $(LDFLAGS)
 
 $(OBJ): $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d

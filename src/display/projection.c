@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:34:28 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/24 13:25:11 by klebon           ###   ########.fr       */
+/*   Updated: 2019/06/04 14:44:47 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ t_point	project_parallele(t_3dpoint *p)
 	// printf("DEBUG project\n");
 	t_point		a;
 	double		n;
-	int			endy;
+	//int			endy;
 
 	n = 0.1;
 	// a.x = (int)(p->x + n * p->z);
 	// a.y = (int)(p->y + n / 2 * p->z);
-	a.x = (int)((p->x - p->y) * cos(0.523599));
-	a.y = (int)(-p->z + (p->x + p->y) * sin(0.523599));
+	a.x = (int)((p->x - p->y) * cos((double)0.523599));
+	a.y = (int)(-p->z + (p->x + p->y) * sin((double)0.523599));
 	// endy = (int)(-p->zmax + (p->x + p->y) * sin(0.523599));
 	// a.color = get_point_color(a, endy);
 	// a.x = (int)p->x;
