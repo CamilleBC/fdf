@@ -6,53 +6,39 @@
 #    By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/06 12:29:40 by cbaillat          #+#    #+#              #
-#    Updated: 2019/05/09 13:47:30 by cbaillat         ###   ########.fr        #
+#    Updated: 2019/06/04 12:16:24 by cbaillat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 ######################
 # EDITABLE VARIABLES #
 ######################
-EXEC	=	fdf
+EXEC = fdf
 
-CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror $(IFLAGS)
-DBGFLAGS	=	-Wall -Wextra -DDEBUG -g $(IFLAGS)
+# sources, directories, libraries,... should be edited in the corresponding .mk
+include mk/colours.mk\
+        mk/dir.mk\
+        mk/lib.mk\
+        mk/src.mk
 
-SRCDIR		=	srcs
-SRCFILES	=	draw.c \
-				error.c \
-				events.c \
-				fdf.c \
-				free.c \
-				init.c \
-				parser.c \
-				parser_checker.c \
-				projection.c \
-				window.c
+# TOOLS
+CC    := gcc
+ECHO  := @echo
+MKDIR := @mkdir -p
+MAKE  := @make
+RM    := @rm -f
 
-OBJDIR		=	objs
-OBJFILES	:= 	$(SRCFILES:%.c=$(OBJDIR)/%.o)
+# FLAGS
+CFLAGS   := -Wall -Wextra #-Werror
+DBGFLAGS := -g -DDEBUG
+IFLAGS = $(foreach idir, $(INC_DIR), $(addprefix -I, $(idir)))
 
-IDIR	=	includes \
-			libft/includes \
-			minilibx
-IFLAGS	=	$(addprefix -I,$(IDIR))
 
-DEPDIR		=	deps
-DEPFILES	:= 	$(SRCFILES:%.c=$(DEPDIR)/%.d)
-DEPFLAGS	=	-MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+OBJ := $(SRC:%.c=$(BUILD_DIR)/%.o)
 
-LIBDIR			=	libft \
-					minilibx
-LIBDIRFLAGS		=	$(addprefix -L,$(LIBDIR))
-LIBFILES		=	ft \
-					mlx
-
-MLXFLAGS	=	-framework OpenGL -framework AppKit
-
-LIBFILESFLAGS	=	$(addprefix -l,$(LIBFILES))
-LDFLAGS = $(LIBDIRFLAGS) $(LIBFILESFLAGS)
+DEP      := $(SRC:%.c=$(BUILD_DIR)/%.d)
+DEPFLAGS = -MT $@ -MMD -MP -MF $(BUILD_DIR)/$*.d
 
 ###############
 # DO NOT EDIT #
@@ -71,52 +57,42 @@ LDFLAGS = $(LIBDIRFLAGS) $(LIBFILESFLAGS)
 # 		In a static pattern rule, the stem is part of the file name
 #		that matched the ‘%’ in the target pattern.
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re mkdirs debug
 
-all		: $(EXEC)
+all: mkdirs $(EXEC)
 
-$(EXEC)	: $(OBJFILES)
-	@make -C ./libft/
-	@make -C ./minilibx/
-	@echo "Compiling ${GREEN}$@${NC} executable..."
-	@${CC} $(MLXFLAGS) $(LDFLAGS) -o $@ $^
+debug: CFLAGS += $(DBGFLAGS)
+debug: all
 
-$(OBJFILES)	: $(OBJDIR)/%.o: $(SRCDIR)/%.c $(DEPDIR)/%.d
-	@echo "Compiling ${BLUE}$(@F)${NC}..."
-	@mkdir -p $(OBJDIR) ${DEPDIR}
-	@$(CC) -o $@ -c $< $(CFLAGS) $(DEPFLAGS)
+$(EXEC): $(OBJ)
+	$(MAKE) -C ./libft/
+	$(MAKE) -C ./minilibx/
+	$(ECHO) "Compiling ${GREEN}$@${NC} executable..."
+	@$(CC) $(MLXFLAGS) -o $@ $^ $(LDFLAGS)
 
-$(DEPDIR)/%.d: ;
+$(OBJ): $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
+	$(ECHO) "Compiling ${BLUE}$(@F)${NC}..."
+	@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $< $(DEPFLAGS)
+
+$(BUILD_DIR)/%.d: ;
 # Make dep directory precious so that .d files don't get destroy in intermediate builds
-.PRECIOUS: $(DEPDIR)/%.d
+.PRECIOUS: $(BUILD_DIR)/%.d
 
-debug	:	CFLAGS = $(DBGFLAGS)
-debug	:	$(EXEC)
+clean:
+	$(MAKE) clean -C ./libft/
+	$(MAKE) clean -C ./minilibx/
+	$(ECHO) "Cleaning ${RED}build artifacts${NC}..."
+	$(RM) -r $(BUILD_DIR)
 
-clean	:
-	@make clean -C ./libft/
-	@make clean -C ./minilibx/
-	@echo "Cleaning ${RED}build artifacts${NC}..."
-	@rm -rf $(OBJDIR) $(DEPDIR)
+fclean: clean
+	$(MAKE) fclean -C ./libft/
+	$(ECHO) "Cleaning ${RED}executable${NC}..."
+	$(RM) $(EXEC)
 
-fclean	: clean
-	@make fclean -C ./libft/
-	@echo "Cleaning ${RED}executable${NC}..."
-	@rm -rf $(EXEC)
+re: fclean all
 
-re		: fclean all
+mkdirs:
+	$(MKDIR) $(BUILD_DIR)
 
 -include $(DEPFILES)
 
-#################
-# Customization #
-#################
-# echo output colours
-RED	= \033[1;31m
-GREEN	= \033[1;32m
-YELLOW	= \033[1;33m
-BLUE	= \033[1;34m
-PURPLE	= \033[1;35m
-CYAN	= \033[1;36m
-WHITE	= \033[1;37m
-NC	= \033[0m
