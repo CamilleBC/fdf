@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:32:27 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/21 18:28:53 by klebon           ###   ########.fr       */
+/*   Updated: 2019/06/04 16:19:12 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #define K_LEFT		123
 #define K_UP		126
 #define K_DOWN		125
+#define K_Q			12
 #define K_X			7
 #define K_Y			16
 #define K_Z			6

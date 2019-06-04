@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:29:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/21 18:55:24 by klebon           ###   ########.fr       */
+/*   Updated: 2019/06/04 16:18:06 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int deal_key(int key, void *param)
 		move(fdf, key);
 	else if (key == K_MULT || key == K_DIVID || key == K_PLUS || key == K_MINUS)
 		zoom(fdf, key);
-	else if (key == K_ESCAPE)
+	else if (key == K_ESCAPE || key == K_Q)
 		kill_window(fdf);
 	return (EXIT_SUCCESS);
 }

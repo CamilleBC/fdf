@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 16:29:25 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/06/04 14:51:29 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 16:08:57 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "typedefs.h"
 #include <tgmath.h>
 
-void	draw_map(t_fdf *fdf);
+void 	apply_transfo(t_fdf *fdf, int x, int y);
 void	mult_mat(double m1[3][3], double m2[3][3]);
 void	mult_rot(t_fdf *fdf, int x, int y, t_3dpoint *p);
 t_point	project_parallele(t_3dpoint *p);

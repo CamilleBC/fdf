@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 10:46:46 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/17 13:00:42 by klebon           ###   ########.fr       */
+/*   Updated: 2019/06/04 16:10:57 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@
 #include "typedefs.h"
 
 void create_window(t_fdf *fdf);
-void	create_image(t_fdf *fdf);
+void create_image(t_fdf *fdf);
 
 #endif /* WINDOW_H */

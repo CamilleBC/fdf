@@ -6,11 +6,12 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/06/04 13:59:12 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 16:11:46 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
+#include "projection.h"
 
 /*
 ** We are using Bresenham's line algorithm:
@@ -19,12 +20,10 @@
 ** We check the direction we need to go, depending on the position of A compared
 ** to B, we change the step for each pixel to (1) or (-1).
 */
-// void draw_line(t_map *map, t_point a, t_point b, int colour)
 void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 {
 	// dbg:
 	(void)colour;
-	// printf("DEBUG draw\n");
 	t_point delta;
 	t_point step;
 	t_point start;
@@ -52,7 +51,25 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 			a.y += step.y;
 		}
 	}
-	// printf("DEBUG draw out\n");
+}
+
+void	draw_map(t_fdf *fdf)
+{
+	int			i;
+	int			j;
+
+	create_image(fdf);
+	j = -1;
+	while (++j < fdf->map->height)
+	{
+		i = -1;
+		while (++i < fdf->map->width)
+		{
+			apply_transfo(fdf, i, j);
+		}
+	}
+	mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
+		, fdf->img->ptr, 0, 0);
 }
 
 void fill_pixel(t_fdf *fdf, int x, int y, int color)

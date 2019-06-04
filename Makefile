@@ -6,7 +6,7 @@
 #    By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/06 12:29:40 by cbaillat          #+#    #+#              #
-#    Updated: 2019/06/04 15:47:03 by cbaillat         ###   ########.fr        #
+#    Updated: 2019/06/04 16:20:57 by cbaillat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,6 @@ $(EXEC): $(OBJ)
 	$(MAKE) -C ./libft/
 	$(MAKE) -C ./minilibx/
 	$(ECHO) "Compiling ${GREEN}$@${NC} executable..."
-	$(ECHO) $(INC_DIR)
 	@$(CC) $(MLXFLAGS) -o $@ $^ $(LDFLAGS)
 
 $(OBJ): $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d

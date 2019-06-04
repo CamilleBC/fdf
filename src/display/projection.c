@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:34:28 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/06/04 15:39:35 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 16:12:04 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	mult_rot(t_fdf *fdf, int x, int y, t_3dpoint *p)
 
 void 	apply_transfo(t_fdf *fdf, int x, int y)
 {
-	// printf("DEBUG transfo\n");
 	t_point	a;
 	t_point	b;
 	t_3dpoint	pt[3];
@@ -79,22 +78,3 @@ void 	apply_transfo(t_fdf *fdf, int x, int y)
 	}
 }
 
-void	draw_map(t_fdf *fdf)
-{
-	int			i;
-	int			j;
-
-	create_image(fdf);
-	j = -1;
-	while (++j < fdf->map->height)
-	{
-		i = -1;
-		while (++i < fdf->map->width)
-		{
-			apply_transfo(fdf, i, j);
-		}
-	}
-	// printf("DEBUG\n");
-	mlx_put_image_to_window(fdf->window->mlx_ptr, fdf->window->win_ptr
-		, fdf->img->ptr, 0, 0);
-}
