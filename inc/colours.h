@@ -6,12 +6,14 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:34:39 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/07 08:45:38 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/24 13:25:33 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOURS_H   
+#ifndef COLOURS_H
 #define COLOURS_H
+
+#include "typedefs.h"
 
 #define BLACK 	0x000000
 #define WHITE 	0xFFFFFF
@@ -29,5 +31,10 @@
 #define PURPLE 	0x800080
 #define TEAL 	0x008080
 #define NAVY 	0x000080
+
+double percent(int start, int end, int current);
+int get_light(int start, int end, double percentage);
+int get_color(t_point current, t_point start, t_point end, t_point delta);
+int	get_point_color(int z, int zmax);
 
 #endif /* COLOURS_H */

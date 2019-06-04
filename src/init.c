@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:58:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:17:37 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/23 12:06:33 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ t_fdf *init_fdf(void)
 	fdf->camera = NULL;
 	fdf->map = NULL;
 	fdf->window = NULL;
+	set_idmat(fdf);
+	set_rotx(fdf->rotx);
+	set_roty(fdf->roty);
+	set_rotz(fdf->rotz);
+	fdf->zmax = 0;
 	return fdf;
 }
 
@@ -50,14 +55,12 @@ t_map *init_map(void)
 	return map;
 }
 
-t_window *init_window(t_resolution res)
+t_window *init_window(void)
 {
 	t_window *window;
 	if ((window = (t_window *) malloc(sizeof(t_window))) == NULL)
 		return NULL;
 	window->mlx_ptr = NULL;
 	window->win_ptr = NULL;
-	window->res.x = res.x;
-	window->res.y = res.y;
 	return window;
 }

@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:54:23 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:29:05 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/05/24 12:17:55 by klebon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@
 // void draw_line(t_map *map, t_point a, t_point b, int colour)
 void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 {
+	// printf("DEBUG draw\n");
 	t_point delta;
 	t_point step;
+	t_point start;
 	int     error;
 	int     next_error;
 
+	start = a;
 	delta.x = abs(b.x - a.x);
 	delta.y = -abs(b.y - a.y);
 	step.x = a.x < b.x ? 1 : -1;
@@ -34,8 +37,7 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 	error = delta.x + delta.y;
 	while ((a.x != b.x) || (a.y != b.y))
 	{
-		mlx_pixel_put(fdf->window->mlx_ptr, fdf->window->win_ptr, a.x, a.y, colour);
-		// fill_pixel(win->image_string, a, win.res, colour);
+		fill_pixel(fdf, a.x, a.y, get_color(a, start, b, delta));
 		next_error = 2 * error;
 		if (next_error >= delta.y)
 		{
@@ -48,24 +50,17 @@ void draw_line(t_fdf *fdf, t_point a, t_point b, int colour)
 			a.y += step.y;
 		}
 	}
+	// printf("DEBUG draw out\n");
 }
 
-/*
-** Use a binary mask to set the pixels color
-*/
-void fill_pixel(int **image, t_point pixel, t_resolution res, int colour)
+void fill_pixel(t_fdf *fdf, int x, int y, int color)
 {
-	int x_index;
-	int y_index;
-	int pixel_ptr;
-
-	x_index = pixel.x * 4;
-	y_index = pixel.y * res.x;
-	pixel_ptr = x_index + y_index;
-
-	// DEBUG
-	printf("Pixel X: %d\n", x_index);
-	printf("Pixel Y: %d\n", y_index);
-	printf("Pixel: %x\n", image[pixel_ptr]);
-	(*image)[pixel_ptr] = colour;
+	// printf("DEBUG fill in x = %d, y = %d\n", x, y);
+	unsigned int		*img_cast;
+	if (x < SCR_WIDTH && x >= 0 && y >= 0 && y < SCR_HEIGTH )
+	{
+		img_cast = (unsigned int *)(fdf->img->str);
+		img_cast[y * SCR_WIDTH + x] = color;
+	}
+	// printf("DEBUG fill out x = %d, y = %d\n", x, y);
 }

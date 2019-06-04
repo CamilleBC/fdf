@@ -7,7 +7,9 @@ SRC := error.c\
        free.c\
        init.c
 # display module
-SRC += draw.c\
+SRC += color.c\
+       draw.c\
+       matrice.c\
        projection.c\
        window.c
 # parser module
