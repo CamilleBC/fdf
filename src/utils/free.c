@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:49:15 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 16:26:26 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 15:39:35 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void free_map(t_map *map)
 		if (map->array != NULL)
 		{
 			i = 0;
-			while (i++ < map->y)
+			while (i++ < map->height)
 				free(map->array[i]);
 			free(map->array);
 		}

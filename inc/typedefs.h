@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 08:34:10 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/06/04 14:20:58 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 15:39:10 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ typedef struct	s_window
 typedef struct	s_map
 {
 	/* rename to lenght / width */
-	int   x;
-	int   y;
+	int   width;
+	int   height;
 	int **array;
 }				t_map;
 

@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 08:42:46 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/06/04 14:00:43 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 15:39:35 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ void parse_map(t_fdf *fdf, const char *path)
 		error_fdf(fdf, "The map is empty.\n");
 	else if (status < 0)
 		error_fdf(fdf, "error gnl");
-	fdf->map->y = i;
+	fdf->map->height = i;
 	free(line);
 	close(fd);
-	printf("zmax %d\n", fdf->zmax);
-	// print_map(fdf->map);
 }
 
 void parse_line(char *line, t_fdf *fdf, int i)
@@ -94,11 +92,11 @@ int *parse_points(char **split_line, t_fdf *fdf)
 /*DEBUG */
 void print_map(t_map *map)
 {
-	printf("Map X: %d\n", map->x);
-	printf("Map Y: %d\n", map->y);
-	for (int i = 0; i < map->y; i++)
+	printf("Map X: %d\n", map->width);
+	printf("Map Y: %d\n", map->height);
+	for (int i = 0; i < map->height; i++)
 	{
-		for (int j = 0; j < map->x; j++)
+		for (int j = 0; j < map->width; j++)
 			printf("%d ", map->array[i][j]);
 		printf("\n");
 	}

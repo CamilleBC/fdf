@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:58:02 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/06/04 13:59:49 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 15:39:35 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ t_map *init_map(void)
 	if ((map = (t_map *) malloc(sizeof(t_map))) == NULL)
 		return NULL;
 	map->array = NULL;
-	map->x = INVALID;
-	map->y = INVALID;
+	map->width = INVALID;
+	map->height = INVALID;
 	return map;
 }
 

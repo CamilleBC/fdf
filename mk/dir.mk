@@ -1,7 +1,7 @@
 #######################
 # Project directories #
 #######################
-MODULES   := parser display
+MODULES   := parser display utils
 BUILD_DIR := build
 INC_ROOT  := inc
 SRC_ROOT  := src

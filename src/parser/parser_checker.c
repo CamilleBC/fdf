@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 11:34:38 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/05/09 11:35:58 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 15:39:25 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int check_map_x(t_map *map, char **split_line)
 	i = 0;
 	while (split_line[i])
 		i++;
-	if (map->x == INVALID)
-		map->x = i;
-	else if (map->x != i)
+	if (map->width == INVALID)
+		map->width = i;
+	else if (map->width != i)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 09:34:28 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/06/04 14:44:47 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/04 15:39:35 by cbaillat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void 	apply_transfo(t_fdf *fdf, int x, int y)
 	mult_rot(fdf, x, y, &pt[0]);
 	a = project_parallele(&pt[0]);
 	a.color = get_point_color(fdf->map->array[y][x], fdf->zmax);
-	if (x + 1 < fdf->map->x)
+	if (x + 1 < fdf->map->width)
 	{
 		mult_rot(fdf, x + 1, y, &pt[1]);
 		b = project_parallele(&pt[1]);
@@ -69,7 +69,7 @@ void 	apply_transfo(t_fdf *fdf, int x, int y)
 		draw_line(fdf, a, b, (fdf->map->array[y][x + 1] == 10
 			|| fdf->map->array[y][x] == 10) ? GREEN : RED);
 	}
-	if (y + 1 < fdf->map->y)
+	if (y + 1 < fdf->map->height)
 	{
 		mult_rot(fdf, x, y + 1, &pt[2]);
 		b = project_parallele(&pt[2]);
@@ -86,10 +86,10 @@ void	draw_map(t_fdf *fdf)
 
 	create_image(fdf);
 	j = -1;
-	while (++j < fdf->map->y)
+	while (++j < fdf->map->height)
 	{
 		i = -1;
-		while (++i < fdf->map->x)
+		while (++i < fdf->map->width)
 		{
 			apply_transfo(fdf, i, j);
 		}
