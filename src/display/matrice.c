@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrice.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klebon <klebon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:19:40 by klebon            #+#    #+#             */
-/*   Updated: 2019/05/23 12:10:46 by klebon           ###   ########.fr       */
+/*   Updated: 2019/06/05 10:17:56 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	set_rotx(double mat[3][3])
 			mat[i][j] = 0.00;
 	}
 	mat[0][0] = 1;
-	mat[1][1] = cos(0.1);
-	mat[2][2] = cos(0.1);
-	mat[1][2] = sin(0.1);
-	mat[2][1] = -sin(0.1);
+	mat[1][1] = cos((double)0.1);
+	mat[2][2] = cos((double)0.1);
+	mat[1][2] = sin((double)0.1);
+	mat[2][1] = -sin((double)0.1);
 }
 
 void	set_roty(double mat[3][3])

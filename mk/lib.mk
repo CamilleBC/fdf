@@ -1,13 +1,13 @@
 #####################
 # Project libraries #
 #####################
-LIBDIR   := libft\
-            minilibx
+LIBDIR   := -Llibft\
+            -Lminilibx
 LDLIBS   := -lft\
             -lm\
             -lmlx\
             -lX11\
             -lXext
 
-LDFLAGS := $(addprefix -L,$(LIBDIR)) $(LDLIBS)
+LDFLAGS := $(LIBDIR) $(LDLIBS)
 

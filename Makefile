@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+         #
+#    By: camille <camille@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/06 12:29:40 by cbaillat          #+#    #+#              #
-#    Updated: 2019/06/04 14:51:50 by cbaillat         ###   ########.fr        #
+#    Updated: 2019/06/05 10:18:16 by camille          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,13 @@ include mk/colours.mk\
 
 # TOOLS
 CC    := gcc
-ECHO  := @echo
+ECHO  := @echo -e
 MKDIR := @mkdir -p
 MAKE  := @make
 RM    := @rm -f
 
 # FLAGS
-CFLAGS   := -Wall -Wextra -Werror #-std=c89
+CFLAGS   := -Wall -Wextra #-Werror #-std=c89
 DBGFLAGS := -g -DDEBUG
 IFLAGS = $(foreach idir, $(INC_DIR), $(addprefix -I, $(idir)))
 
@@ -73,7 +73,7 @@ $(EXEC): $(OBJ)
 
 $(OBJ): $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 	$(ECHO) "Compiling ${BLUE}$(@F)${NC}..."
-	@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $< $(DEPFLAGS)
+	@$(CC) -o $@ -c $< $(CFLAGS) $(IFLAGS) $(DEPFLAGS)
 
 $(BUILD_DIR)/%.d: ;
 # Make dep directory precious so that .d files don't get destroy in intermediate builds

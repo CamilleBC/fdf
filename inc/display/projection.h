@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbaillat <cbaillat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camille <camille@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 16:29:25 by cbaillat          #+#    #+#             */
-/*   Updated: 2019/06/04 14:51:29 by cbaillat         ###   ########.fr       */
+/*   Updated: 2019/06/05 10:07:05 by camille          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "colours.h"
 #include "draw.h"
 #include "typedefs.h"
-#include <tgmath.h>
+#include <math.h>
 
 void	draw_map(t_fdf *fdf);
 void	mult_mat(double m1[3][3], double m2[3][3]);
